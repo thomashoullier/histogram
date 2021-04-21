@@ -66,7 +66,36 @@ Read the number of bins in the histogram. Same as input argument.
 Read the computed size of an individual bin.
 
 ## Example
+Suppose we want to compute the histogram for the following data
+and histogram shape:
 
+```common-lisp
+(defparameter *data* #(1 1 1 9 11 6 0.1 -2 -3))
+(defparameter *bounds* (list 0 10))
+(defparameter *nbins* 4)
+```
+
+We instantiate a histogram with:
+
+```common-lisp
+(defparameter *hist* (make-hist *bounds* *nbins* :data *data*))
+```
+
+The computed histogram is accessible via:
+
+```common-lisp
+(counts *hist*)
+;; => #(4 0 1 1)
+
+(center-of-bins *hist*)
+;; => #(5/4 15/4 25/4 35/4)
+
+(oob-counts *hist*)
+;; => (2 1)
+```
+
+## Caveats
+* Thread-safety: No idea.
 
 ## Dependencies
 * `histogram`: None.
