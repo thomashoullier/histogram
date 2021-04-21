@@ -8,6 +8,6 @@
            #:total-counts
            #:nbins
            #:bin-size
-           #:min-val
-           #:max-val
+           #:min-bound
+           #:max-bound
            #:add))

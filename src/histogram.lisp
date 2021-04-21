@@ -10,7 +10,7 @@
    (oob-counts :documentation "Counts below/above bounds."
                :reader oob-counts :initarg :oob-counts)
    (total-counts :documentation "Total number of occurences."
-                 :reader counts :initarg :total-counts)
+                 :reader total-counts :initarg :total-counts)
    (nbins :documentation "Number of bins."
           :reader nbins :initarg :nbins)
    (bin-size :documentation "Size of bins."
@@ -41,7 +41,7 @@
   (with-slots ((counts counts)
                (oob-counts oob-counts)
                (total-counts total-counts)) hist
-    (let ((min-val (min-val hist))
+    (let ((min-val (min-bound hist))
           (bin-num) (bin-size (bin-size hist)) (nbins (nbins hist)))
       (loop for val across data do
         (setf bin-num (floor (/ (- val min-val) bin-size)))
@@ -51,5 +51,5 @@
         (incf total-counts)))))
 
 ;;; Additional information about histogram.
-(defmethod min-val ((hist hist)) (car (bounds hist)))
-(defmethod max-val ((hist hist)) (cadr (bounds hist)))
+(defmethod min-bound ((hist hist)) (car (bounds hist)))
+(defmethod max-bound ((hist hist)) (cadr (bounds hist)))
