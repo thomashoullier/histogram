@@ -16,8 +16,7 @@
    (bin-size :documentation "Size of bins."
              :reader bin-size :initarg :bin-size)))
 
-;;TODO: * Make data optional for instantiation.
-(defun make-hist (data bounds nbins)
+(defun make-hist (bounds nbins &key (data nil data-supplied-p))
   "Create a hist instance."
   (let* ((center-of-bins (make-array nbins))
          (min-val (car bounds)) (max-val (cadr bounds))
@@ -34,7 +33,7 @@
                 :total-counts 0
                 :nbins nbins :bin-size bin-size))
     ;; Treat the eventual initial data.
-    (add hist data)
+    (when data-supplied-p (add hist data))
     hist))
 
 (defmethod add ((hist hist) data)
