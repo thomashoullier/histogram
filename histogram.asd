@@ -4,7 +4,8 @@
   :components
   ((:module "src"
     :components ((:file "package")
-                 (:file "histogram" :depends-on ("package")))))
+                 (:file "histogram" :depends-on ("package"))
+                 (:file "tofile" :depends-on ("histogram")))))
   :in-order-to ((test-op (test-op "histogram/test"))))
 
 (defsystem histogram/test
