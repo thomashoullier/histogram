@@ -94,6 +94,21 @@ The computed histogram is accessible via:
 ;; => (2 1)
 ```
 
+The histogram can be written to a file with:
+
+```common-lisp
+(tofile *hist* filename)
+```
+
+See ![hist.txt](gnuplot/hist.txt) for the example file output. Note
+that the out-of-bounds counts are included as first and last lines.
+This file can be plotted with ![hist.gp](gnuplot/hist.gp), here is the
+result:
+
+![Example plot](gnuplot/hist.svg)
+
+Note the out-of-bounds counts are colored differently by default.
+
 ## Caveats
 * Thread-safety: No idea.
 

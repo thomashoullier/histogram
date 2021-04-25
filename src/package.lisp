@@ -10,4 +10,5 @@
            #:bin-size
            #:min-bound
            #:max-bound
-           #:add))
+           #:add
+           #:tofile))
